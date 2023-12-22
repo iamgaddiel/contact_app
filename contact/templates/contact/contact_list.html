@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} List {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    <section>
+        <!-- Search Bar -->
+        <form action="{% url 'search_contact' %}" class="search_form">
+            <input type="text" name="search_query" id="">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <!-- Contact Lists -->
+    <ul>
+        {% for contact in object_list %}
+            <li class="list list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div class="contact_avatar">{{ contact.get_first_name_initials }}</div>
+                    <div>
+                        <h1>{{ contact.first_name }} {{ contact.last_name }} </h1>
+                    </div>
+                </div>
+                <div>
+                    <a href="{% url 'contact_detail' contact.id %}">
+                        &RightArrow;
+                    </a>
+                </div>
+            </li>
+        {% empty %}
+            {% if user.is_authenticated %}
+            <h1>You don't seem to have any contact saved</h1>
+            {% else %}
+            <h1>You don't seem to logged in. Login or Create an account </h1>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>
+
+
+
+{% endblock body%}

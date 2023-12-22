@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} object Detail {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    <form method="post">
+        {% csrf_token %}
+        <h3 style="text-align: center;">Are you sure you want to delete the user with the following details? </h3>
+        <ul>
+            <!-- Name -->
+            <li class="list">
+                <small>Name </small>
+                <div class="list_wrapper">
+                    <div style="display: flex; align-items: center;">
+                        <div>
+                            <h1>{{ object.first_name }} {{ object.last_name }} </h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div style="display: flex; justify-content: space-evenly; width: 40%; margin: auto;">
+            <a href="{% url 'admin_user_detail' object.pk %}">No, go back </a>
+            <button type="submit">Yes,delete object </button>
+        </div>
+    </form>
+</section>
+
+
+
+{% endblock body%}

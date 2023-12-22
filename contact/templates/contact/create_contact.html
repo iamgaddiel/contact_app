@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block page_title %} Add {% endblock page_title %}
+
+{% block body %}
+{% include 'core/includes/nav.html' %}
+
+
+<section class="wrapper">
+    <h1>Create Contact </h1>
+    <!-- <form action="{% url 'contact_create' %}" method="POST"> -->
+        <!-- <div>
+            <input type="text" name="first_name" id="" placeholder="First Name">
+            <input type="text" name="last_name" id="" placeholder="Last Name">
+            <input type="text" name="nickname" id="" placeholder="Nick Name">
+        </div> -->
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <!-- {{ contact_form.as_ul }} -->
+            {% for field in contact_form %}
+                <label for="" style="color: red">{{ field.label }}</label>
+                <div class="">
+                    {{ field }}
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="submit">Create Contact</button>
+        </div>
+    </form>
+</section>
+{% endblock body%}

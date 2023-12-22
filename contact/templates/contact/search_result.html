@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} List {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    {% if error_message %}
+        <h4 style="color: red">{{ error_message }}</h4>
+    {% endif %}
+    <ul>
+        {% for contact in contacts %}
+            <li class="list list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div class="contact_avatar">{{ contact.get_first_name_initials }}</div>
+                    <div>
+                        <h1>{{ contact.first_name }} {{ contact.last_name }} </h1>
+                    </div>
+                </div>
+                <div>
+                    <a href="{% url 'contact_detail' contact.id %}">
+                        &RightArrow;
+                    </a>
+                </div>
+            </li>
+        {% empty %}
+            <h1>No contact with the name {{ query }} </h1>
+        {% endfor %}
+    </ul>
+</section>
+
+
+
+{% endblock body%}

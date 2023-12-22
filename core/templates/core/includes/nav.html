@@ -1,0 +1,64 @@
+<!-- <a href="{% url 'admin_user_list' %}">
+    <div class="nav_logo"></div>
+</a> -->
+
+<!-- SuperUser -->
+{% if user.is_authenticated and user.is_superuser %}
+    <nav>
+        <a href="{% url 'admin_user_list' %}">
+            <div class="nav_logo"></div>
+        </a>
+            <h3>Welcome, Lord Of The Rings</h3>
+        
+            <div style="display: flex; justify-content: space-evenly; width: 600px;">
+
+                <a href="{% url 'profile' user.pk %}" class="nav_btn">
+                    Profile
+                </a>
+                <a href="{% url 'logout' %}" class="nav_btn">
+                    Logout
+                </a>
+            </div>
+    </nav>
+    <!-- Regular User -->
+{% elif user.is_authenticated  %}
+    <nav>
+        <a href="{% url 'contact_list' %}">
+            <div class="nav_logo"></div>
+        </a>
+            <h3>Welcome, {{ user.first_name }} {{ user.last_name }} </h3>
+
+
+            <div style="display: flex; justify-content: space-evenly; width: 600px;">
+
+                <a href="{% url 'contact_create' %}" class="nav_btn">
+                    Add Contact
+                </a>
+                <a href="{% url 'profile' user.pk %}" class="nav_btn">
+                    Profile
+                </a>
+                <a href="{% url 'logout' %}" class="nav_btn">
+                    Logout
+                </a>
+            </div>
+    </nav>
+{% else %}
+    <nav>
+        <a href="{% url 'contact_list' %}">
+            <div class="nav_logo"></div>
+        </a>
+        <!-- Anonymous User -->
+        
+        <h3>Welcome Anonymous User!</h3>
+
+        <div style="display: flex; justify-content: space-evenly; width: 600px;">
+            <a href="{% url 'create_user_account' %}" class="nav_btn">
+                Create Account
+            </a>
+            <a href="{% url 'login' %}" class="nav_btn">
+                Login
+            </a>
+        </div>
+    </nav>
+    {% endif %}
+        

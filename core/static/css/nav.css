@@ -1,0 +1,47 @@
+/* 
+AppTheme
+    orange
+    black
+    grey
+    white
+ */
+
+nav {
+  background-color: #eee;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.nav_logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-top: 2px solid #333333;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid #333333;
+  border-left: 2px solid transparent;
+  rotate: 90deg;
+}
+
+/* a {
+  display: block;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: orange;
+  color: #333333;
+  letter-spacing: 1.5px;
+  width: 170px;
+  transition: all 0.5s;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none !important;
+}
+
+.nav_btn:hover {
+  background-color: #333333;
+  color: orange;
+  letter-spacing: 2px;
+} */

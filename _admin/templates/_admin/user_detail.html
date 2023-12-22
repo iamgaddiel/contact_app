@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} User Detail {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    <ul>
+        <!-- Name -->
+        <li class="list">
+            <small>Name </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.first_name }} {{ object.last_name }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list">
+            <small>Username </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.username }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list">
+            <small>Email </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.email }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: space-evenly; width: 50%; margin: auto;">
+        <a href="{% url 'admin_user_delete' object.pk %}">Delete User </a>
+        <a href="{% url 'admin_user_update' object.pk %}">Edit User </a>
+    </div>
+</section>
+
+
+
+{% endblock body%}

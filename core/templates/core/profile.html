@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} object Detail {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    <ul>
+        <!-- Name -->
+        <li class="list">
+            <small>Name </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.first_name }} {{ object.last_name }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Email -->
+        <li class="list">
+            <small>Email </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.email }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!--  -->
+        <li class="list">
+            <small>User </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ object.username }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: space-evenly; width: 50%; margin: auto;">
+        <a href="{% url 'profile_update' user.pk %}">Edit </a>
+    </div>
+</section>
+
+
+
+{% endblock body%}

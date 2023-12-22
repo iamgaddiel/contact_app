@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} Contact Detail {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+    <h3 style="text-align: center;">Are you sure you want to delete the user with the following details? </h3>
+    <ul>
+        <!-- Name -->
+        <li class="list">
+            <small>Name </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.first_name }} {{ contact.last_name }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: space-evenly; width: 40%; margin: auto;">
+        <a href="{% url 'contact_detail' contact.id %}">No, go back </a>
+        <a href="{% url 'contact_delete_confirm' contact.id %}">Yes,delete contact </a>
+    </div>
+</section>
+
+
+
+{% endblock body%}

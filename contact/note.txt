@@ -1,0 +1,54 @@
+Login ->
+Query Login Form Details -> Session [user | user_id ]
+
+Option 1 Dashboard
+Session -> Dashboard (user detail)
+
+Option 2 Dashboard
+Session -> Query DB (user_id)
+Query -> Dashboard
+
+Comment {
+    id: int,
+    user: int
+    text: str
+}
+
+[comments.php]
+<?php
+    foreach($comment as $comments ){
+        <a href="/comments/$comment->userId">...</a>
+    }
+?>
+
+
+function getUserComment($userId){
+    // query comments from DB with provided userId
+    $query = 'Select * FROM Comment WHERE `user_id`=$userId'
+    ...
+}
+
+
+---------------------------------[ Django ]---------------------------------------
+[models.py]
+class Comment:
+    id: int,
+    user: model.ForeignKey(to=User)
+    text: str
+
+
+[template.html]
+{% for comment in comments %}
+    <a href={% url '<route_name>' 'comment.user_id'  %}>...</a>
+{% endfor %}
+
+
+[urls.py]
+path('user/commnets/<int:user_id>', view, route_name)
+
+
+[views.py]
+def get_user_comments(request: HttpRequest, user_id: int) -> HttpResponse:
+    ...
+    user_comments = Comments.objects.filter(user=user_id) # query comments from DB with provided user_id
+    return render(request, template_name, context)

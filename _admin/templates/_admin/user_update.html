@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block page_title %} Add {% endblock page_title %}
+
+{% block body %}
+{% include 'core/includes/nav.html' %}
+
+
+<section class="wrapper">
+    <h1>Update Contact </h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <!-- {{ contact_form.as_ul }} -->
+            {% for field in form %}
+                <label for="" style="color: red">{{ field.label }}</label>
+                <div class="">
+                    {{ field }}
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="submit">Update Contact</button>
+        </div>
+    </form>
+</section>
+{% endblock body%}

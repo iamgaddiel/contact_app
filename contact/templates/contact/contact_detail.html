@@ -1,0 +1,119 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block page_title %} Contact Detail {% endblock page_title %}
+
+{% block body %}
+<header>
+    {% include 'core/includes/nav.html' %}
+</header>
+
+
+<section class="wrapper" style="margin-top: 50px;">
+
+    <div style="width: 200px; height: 200px; margin: auto; overflow: hidden; border-radius: 50%;">
+        <img src="{{ contact.image.url }}" alt="contact image" style="width: 100%;">
+    </div>
+
+
+    <ul>
+        <!-- Name -->
+        <li class="list">
+            <small>Name </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.first_name }} {{ contact.last_name }} </h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Nickname -->
+        <li class="list">
+            <small>Nickname </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.nickname }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Phone Number -->
+        <li class="list">
+            <small>Nickname </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.phone }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Phone Number -->
+        <li class="list">
+            <small>Notes </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.notes }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Website -->
+        <li class="list">
+            <small>Website </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.website }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Website -->
+        <li class="list">
+            <small>Groups </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.groups }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Website -->
+        <li class="list">
+            <small>Job </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.jobs }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Website -->
+        <li class="list">
+            <small>Relationship </small>
+            <div class="list_wrapper">
+                <div style="display: flex; align-items: center;">
+                    <div>
+                        <h1>{{ contact.relationships }}</h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: space-evenly; width: 50%; margin: auto;">
+        <a href="{% url 'contact_delete' contact.id %}">Delete Contact </a>
+        <a href="{% url 'contact_update' contact.id %}">Edit Contact </a>
+    </div>
+</section>
+
+
+
+{% endblock body%}
